@@ -1,1 +1,19 @@
+echo "# DevOps_Commands" >> README.md
 
+git init
+git add README.md
+git add .
+git commit -m "first commit"       #git branch -M old new Force rename (even if name exists)
+git branch -M main                 #git branch -m old new Rename (fails if name already exists)                                 
+git remote add origin https://github.com/ekansh-helloff/DevOps_Commands.git
+git push -u origin main
+git branch -d feat/xyz             #Delete local branch
+git branch -D feat/xyz             #If Git refuses with a warning (not merged), you can force delete with
+git push origin --delete feat/xyz  #This deletes the remote branch from GitHub/GitLab/Bitbucket.
+git branch                         #List branches
+git checkout -b main               #Create branch
+git checkout feature               #Switch branch
+git push origin --delete feat/login #Delete remote branch	
+git branch -r  #List remote branches
+
+gh repo delete <username>/<repo_name> --confirm
