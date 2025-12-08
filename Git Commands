@@ -14,6 +14,23 @@ git branch                         #List branches
 git checkout -b main               #Create branch
 git checkout feature               #Switch branch
 git push origin --delete feat/login #Delete remote branch	
-git branch -r  #List remote branches
+git branch -r                      #List remote branches
+git log --oneline                  #git logs in a single line
+
+git reset --soft HEAD~1            #Undo last commit (but keep code)
+git reset --hard HEAD~1            #Undo last commit (remove code also)
+git revert <commit-id>
+
+========================================================= ADVANCED COMMANDS ========================================================================
 
 gh repo delete <username>/<repo_name> --confirm
+
+git merge feature                  #Combines branches preserving history
+git rebase main                    #Rewrites history by moving commits, Makes commit history clean & linear, Dangerous if branch is shared (history rewrite)
+git checkout production ==> git cherry-pick 9f8de2a        # Cherry-pick is used for selectively applying commits across branches without merging the full branch.
+
+{In hotfix or emergency production support, cherry-pick is widely used. For example, if a fix is done on a feature branch but must go to production immediately,
+I'll cherry-pick only that commit to main or release. If there is a conflict, I resolve it, add the file, and continue. This avoids merging unnecessary incomplete
+development code into production.}
+
+C️⃣ Fast-forward merge
