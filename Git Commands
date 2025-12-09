@@ -28,9 +28,31 @@ gh repo delete <username>/<repo_name> --confirm
 git merge feature                  #Combines branches preserving history
 git rebase main                    #Rewrites history by moving commits, Makes commit history clean & linear, Dangerous if branch is shared (history rewrite)
 git checkout production ==> git cherry-pick 9f8de2a        # Cherry-pick is used for selectively applying commits across branches without merging the full branch.
+( git cherry-pick --continue/git cherry-pick --abort )
 
 {In hotfix or emergency production support, cherry-pick is widely used. For example, if a fix is done on a feature branch but must go to production immediately,
 I'll cherry-pick only that commit to main or release. If there is a conflict, I resolve it, add the file, and continue. This avoids merging unnecessary incomplete
 development code into production.}
 
-C️⃣ Fast-forward merge
+git rebase -i HEAD~5
+      |||O/p|||
+~pick 9a3d123 added login UI
+~pick 19c029c fixed typo
+~pick 3be1a39 fixed another typo
+~pick 82c93fa removed print statement
+~pick bcd9321 final fix
+
+s / squash	combine commits
+r / reword	edit commit message
+d / drop	delete commit
+edit	modify commit content
+
+pick 9a3d123 added login UI
+s 19c029c fixed typo
+s 3be1a39 fixed another typo
+s 82c93fa removed print statement
+pick bcd9321 final fix
+
+git merge --squash feature/login        #All 10 commits of branch become 1 clean commit on main. ✔ easy revert, ✔ clean history, ✔ ideal for CI/CD release notes
+
+Fast-forward merge
