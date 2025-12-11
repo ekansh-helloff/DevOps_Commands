@@ -17,9 +17,12 @@ git push origin --delete feat/login #Delete remote branch
 git branch -r                      #List remote branches
 git log --oneline                  #git logs in a single line
 
-git reset --soft HEAD~1            #Undo last commit (but keep code)
-git reset --hard HEAD~1            #Undo last commit (remove code also)
-git revert <commit-id>
+git reset --soft HEAD~1            #Undo last commit (move branch, but keep code/directory and staging)
+git reset mixed****                      #Undo last commit (move branch and staging too, but keep code/directory)
+git reset --hard HEAD~1            #Undo last commit (move branch, remove code/directory and staging also)
+git revert <commit-id>             #Creates new commit that undoes changes, nothin is deleted
+git reflog 
+
 
 ========================================================= ADVANCED COMMANDS ========================================================================
 
